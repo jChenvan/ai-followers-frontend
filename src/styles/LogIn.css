@@ -1,0 +1,27 @@
+.login-page {
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: linear-gradient(to top right, blue,aquamarine,cyan);
+}
+
+.login-page form {
+    background-color: white;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 10px;
+    row-gap: 5px;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.login-page button {
+    justify-self: center;
+    grid-column: 1/-1;
+}
+
+.login-page a {
+    grid-column: 2/-1;
+    justify-self: end;
+}
