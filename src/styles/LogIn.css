@@ -6,6 +6,12 @@
     background-image: linear-gradient(to top right, blue,aquamarine,cyan);
 }
 
+.login-page h1 {
+    grid-column: 1/-1;
+    margin-top: 0;
+    text-align: center;
+}
+
 .login-page form {
     background-color: white;
     display: grid;

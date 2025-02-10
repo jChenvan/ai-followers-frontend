@@ -1,0 +1,50 @@
+.thread {
+    box-shadow: 0 0 10px black;
+    width: 50ch;
+    margin-left: 20px;
+    border-radius: 10px;
+    list-style: none;
+    padding: 0;
+    padding-bottom: 20px;
+}
+
+.post > div{
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    column-gap: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.post img {
+    justify-self: center;
+}
+
+.post > div > p {
+    grid-column: 2/-1;
+    margin-top: 0;
+}
+
+.post .date {
+    grid-column: 2/-1;
+    justify-self: end;
+    color: rgb(99, 99, 99);
+}
+
+.post:first-child p {
+    font-size: 150%;
+}
+
+.post:not(:first-child) h1 {
+    font-size: 100%;
+}
+
+.post:not(:first-child) img {
+    width: 40px;
+}
+
+.post:not(:first-child) div {
+    padding-left: 40px;
+    padding-top: 10px;
+}

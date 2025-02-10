@@ -36,17 +36,17 @@ nav button {
     text-align: start;
 }
 
-li button {
+nav li button {
     width: 100%;
     padding-left: 40px;
     font-size: 24px;
 }
 
-li button:hover {
+nav li button:hover {
     background-color: gray;
 }
 
-li button:active {
+nav li button:active {
     background-color: rgb(92, 92, 92);
 }
 
@@ -56,4 +56,14 @@ button.profile {
     padding: 20px 30px;
     gap: 8px;
     font-size: 18px;
+}
+
+dialog {
+    padding: 0;
+    border: none;
+}
+
+dialog div {
+    padding:50px;
+    background-color: white;
 }
