@@ -1,7 +1,7 @@
 .thread {
     box-shadow: 0 0 10px black;
     width: 50ch;
-    margin-left: 20px;
+    margin: 20px;
     border-radius: 10px;
     list-style: none;
     padding: 0;
@@ -11,14 +11,27 @@
 .post > div{
     padding: 0 30px;
     display: grid;
-    grid-template-columns: 50px 1fr;
+    grid-template-columns: 50px 1fr auto;
     align-items: center;
     column-gap: 10px;
     border-bottom: 1px solid gray;
 }
 
-.post img {
+.post img.profile {
     justify-self: center;
+}
+
+.post button.options img {
+    width: 30px;
+}
+
+button.options {
+    background:none;
+    border: none;
+}
+
+button.options:hover {
+    filter: invert() brightness(0.5);
 }
 
 .post > div > p {
@@ -40,7 +53,7 @@
     font-size: 100%;
 }
 
-.post:not(:first-child) img {
+.post:not(:first-child) img.profile {
     width: 40px;
 }
 

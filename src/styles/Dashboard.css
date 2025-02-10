@@ -1,12 +1,9 @@
 main {
   height:calc(100vh - 123.97px);
   display: flex;
+  justify-content: center;
   position: relative;
   z-index: 0;
-}
-
-main > :last-child {
-  flex: 1;
 }
   
 header {

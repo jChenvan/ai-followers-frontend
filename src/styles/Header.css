@@ -28,3 +28,9 @@ header {
 .robo {
     color:rgb(0, 153, 255);
 }
+
+.new-post {
+    width: 50ch;
+    display: flex;
+    flex-direction: column;
+}

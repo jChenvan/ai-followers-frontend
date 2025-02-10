@@ -58,6 +58,11 @@ button.profile {
     font-size: 18px;
 }
 
+button.profile:hover .text {
+    color: blue;
+    text-decoration: underline;
+}
+
 dialog {
     padding: 0;
     border: none;
