@@ -26,9 +26,10 @@ function Feed() {
   const [posts,postError,postLoading,reloadPosts] = useApi('http://localhost:3000/posts/','GET',undefined,{
     Authorization:localStorage.token,
   });
-  const dialogRef = useRef(null);
+  const optionsRef = useRef(null);
 
   const [newPost,setNewPost] = useState('');
+  const [currPost, setCurrPost] = useState(0);
 
   return (
     <>
@@ -36,33 +37,10 @@ function Feed() {
       <main>
         <Sidebar></Sidebar>
         <div className='feed'>
-          {posts ? (
-            getTopLevel(posts).map(thread => <Thread key = {thread[0].id} thread={thread}></Thread>)
-          ):'whoa'}
-          <button onClick={()=>{
-            dialogRef.current.showModal();
-            for (const child of dialogRef.current.firstElementChild.firstElementChild.children) {
-              child.disabled = false;
-            }
-            }}>
-            +
-          </button>
-        </div>
-      </main>
-      <dialog className="new-post" ref={dialogRef} onClick={e=>{
-        if (e.target === dialogRef.current) {
-          dialogRef.current.close();
-        }
-      }}>
-        <div>
-          <form action="">
-            <label htmlFor="new-post">New Post</label>
-            <textarea name="content" id="new-post" cols={40} rows={7} value={newPost} onChange={e=>setNewPost(e.target.value)}></textarea>
+          <form action="" className="new-post">
+            <textarea value={newPost} onChange={e=>setNewPost(e.target.value)} name="post-content" id="post-content" cols="30" rows="10" placeholder='feeling a little...'></textarea>
             <button onClick={async e=>{
               e.preventDefault();
-              for (const child of dialogRef.current.firstElementChild.firstElementChild.children) {
-                child.disabled = true;
-              }
               const response = await fetch('http://localhost:3000/posts/',{
                 method:'POST',
                 body:JSON.stringify({content:newPost}),
@@ -72,10 +50,32 @@ function Feed() {
                 }
               });
               reloadPosts();
-              dialogRef.current.close();
+              setNewPost('');
             }}>New post</button>
           </form>
+          {posts ? (
+            getTopLevel(posts).map(thread => <Thread key = {thread[0].id} thread={thread} optionsRef={optionsRef} setCurrPost={setCurrPost}></Thread>)
+          ):'whoa'}
         </div>
+      </main>
+      <dialog className="options" ref={optionsRef} onClick={e=>{
+        if (e.target === optionsRef.current) {
+          optionsRef.current.close();
+        }
+      }}>
+        <button onClick={async ()=>{
+          await fetch(`http://localhost:3000/posts/${currPost}`,{
+            method:'DELETE',
+            headers:{
+              "Content-Type":"application/json",
+              Authorization:localStorage.token
+            },
+          });
+          reloadPosts();
+          optionsRef.current.close();
+        }}>
+          Delete
+        </button>
       </dialog>
     </>
   )
