@@ -15,7 +15,12 @@ const router = createBrowserRouter([
     {
         path:'/',
         element:<ProtectedRoute/>,
-        children:[{path:"",element:<Feed/>}]
+        children:[
+            {path:"",element:<Navigate to="/feed" replace/>},
+            {path:"/feed", element:<Feed/>},
+            {path:"/messages", element:<h1>Hello</h1>},
+            {path:"/friends", element:<h1>Hello</h1>}
+        ]
     },
     {
         path:'/login',
