@@ -27,9 +27,9 @@ function Sidebar() {
             <img src={Search} alt="" width={20}/>
         </div>
         <ul>
-            <li><button>Feed</button></li>
-            <li><button>Chats</button></li>
-            <li><button>Friends</button></li>
+            <li><button onClick={()=>nav('/feed',{replace:true})}>Feed</button></li>
+            <li><button onClick={()=>nav('/messages',{replace:true})}>Chats</button></li>
+            <li><button onClick={()=>nav('/friends',{replace:true})}>Friends</button></li>
         </ul>
         <button className="profile" onClick={()=>dialogRef.current.showModal()}>
             <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${90}deg)`}}/>
