@@ -1,14 +1,45 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import '../styles/LogIn.css'
 
 function LogIn({isUserNew}) {
+    const [username,setUsername] = useState('');
+    const [password,setPassword] = useState('');
+    const nav = useNavigate();
 
-    return (<div className="log-in-page">
+    return (<div className="login-page">
         <form action="" method="post">
-            <label htmlFor="username"></label>
-            <input type="text" id="username" name="username"/>
-            <label htmlFor="password"></label>
-            <input type="password" id="password" name="password"/>
-            <button>Log in</button>
+            <h1>{isUserNew ? 'Sign Up' : 'Log In'}</h1>
+            <label htmlFor="username">Username</label>
+            <input type="text" id="username" name="username" value={username} onChange={e=>setUsername(e.target.value)}/>
+            <label htmlFor="password">Password</label>
+            <input type="password" id="password" name="password" value={password} onChange={e=>setPassword(e.target.value)}/>
+            <button onClick={async event=>{
+                event.preventDefault();
+                const response = await fetch('http://localhost:3000/'.concat(isUserNew ? 'users' : 'log-in'),{
+                    method:'POST',
+                    headers: {
+                        'Content-Type': "application/json"
+                    },
+                    body: JSON.stringify({
+                        username,
+                        password
+                    }),
+                    mode:'cors'
+                });
+                if (response.status >= 400) {
+                    return;
+                }
+                const data = await response.json();
+                if (isUserNew) {
+                    nav('/login',{replace:true});
+                } else {
+                    localStorage.token = data.token;
+                    localStorage.username = username;
+                    nav('/',{replace:true});
+                }
+            }}>{isUserNew ? 'Sign up' : 'Log in'}</button>
+            <Link to={isUserNew ? '/login':'/signup'}>{isUserNew ? 'Already a user? Log in!' : 'Not a user? Sign up!'}</Link>
         </form>
     </div>)
 }

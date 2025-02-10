@@ -1,12 +1,27 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Search from '/magnify.svg'
 import ProfilePic from '/man.png'
 import '../styles/Sidebar.css'
+import { useNavigate } from "react-router-dom";
 
-function Sidebar({hueRotation,username}) {
+function Sidebar() {
     const [query,setQuery] = useState('');
+    const dialogRef = useRef(null);
+    const nav = useNavigate();
 
-    return (<nav>
+    return (<>
+    <dialog ref={dialogRef} onClick={event => {if (event.target === dialogRef.current) {dialogRef.current.close()}}}>
+        <div>
+            <button onClick={
+                () => {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('username');
+                    nav('/login',{replace:true});
+                }
+            }>Log out</button>
+        </div>
+    </dialog>
+    <nav>
         <div className="search">
             <input type="text" value={query} onChange={event=>setQuery(event.target.value)}/>
             <img src={Search} alt="" width={20}/>
@@ -16,11 +31,12 @@ function Sidebar({hueRotation,username}) {
             <li><button>Chats</button></li>
             <li><button>Friends</button></li>
         </ul>
-        <button className="profile">
-            <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${hueRotation}deg)`}}/>
-            <div className="text">@{username}</div>
+        <button className="profile" onClick={()=>dialogRef.current.showModal()}>
+            <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${90}deg)`}}/>
+            <div className="text">@{localStorage.username}</div>
         </button>
-    </nav>)
+    </nav>
+    </>)
 }
 
 export default Sidebar
