@@ -2,6 +2,8 @@ import { createBrowserRouter, RouterProvider, Navigate, Outlet } from "react-rou
 
 import Feed from "./Feed";
 import LogIn from "./LogIn";
+import Chats from "./Chats";
+import Friends from "./Friends";
 
 const isAuthenticated = () => {
     return localStorage.token ? true : false;
@@ -18,8 +20,8 @@ const router = createBrowserRouter([
         children:[
             {path:"",element:<Navigate to="/feed" replace/>},
             {path:"/feed", element:<Feed/>},
-            {path:"/messages", element:<h1>Hello</h1>},
-            {path:"/friends", element:<h1>Hello</h1>}
+            {path:"/messages", element:<Chats/>},
+            {path:"/friends", element:<Friends></Friends>}
         ]
     },
     {
