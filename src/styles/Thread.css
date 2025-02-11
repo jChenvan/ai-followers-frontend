@@ -57,7 +57,18 @@ button.options:hover {
     width: 40px;
 }
 
-.post:not(:first-child) div {
-    padding-left: 40px;
+.post:not(:first-child) > div {
+    padding-left: 50px;
     padding-top: 10px;
+    border-left: 10px solid black;
+}
+
+.reply-form {
+    position: relative;
+}
+
+.reply-form .reply {
+    z-index: 2;
+    position: absolute;
+    background-color: antiquewhite;
 }

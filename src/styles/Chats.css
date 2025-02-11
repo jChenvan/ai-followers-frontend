@@ -1,0 +1,46 @@
+.chat {
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages {
+    flex: 1;
+}
+
+.messages ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width:50ch;
+    padding: 0px 30px;
+    gap: 10px;
+}
+
+.messages li {
+    padding:0 10px;
+    border-radius: 3px;
+}
+
+.messages li div {
+    font-size: 70%;
+    color: gray;
+}
+
+.friend {
+    align-self: flex-end;
+    background-color: rgb(163, 218, 255);
+    margin-left: 50px;
+}
+
+.you {
+    align-self: flex-start;
+    background-color: rgb(255, 255, 178);
+    margin-right: 50px;
+}
+
+.new-message {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+}

@@ -10,3 +10,7 @@
 .new-post textarea {
     resize: none;
 }
+
+.hidden {
+    display: none;
+}
