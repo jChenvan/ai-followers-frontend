@@ -7,11 +7,11 @@ import Thread from './Thread'
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function getReplies(currId, allNodes) {
+function getReplies(currId, allNodes,depth) {
   const firstDegreeReplies = allNodes.filter(val=>val.parentId === currId);
-  const res = [allNodes.find(val=>val.id === currId)];
+  const res = [{...(allNodes.find(val=>val.id === currId)),depth}];
   firstDegreeReplies.forEach(reply=>{
-    res.push(...(getReplies(reply.id,allNodes)));
+    res.push(...(getReplies(reply.id,allNodes,depth+1)));
   });
   return res;
 }
@@ -19,7 +19,8 @@ function getReplies(currId, allNodes) {
 function getTopLevel(allNodes) {
   return allNodes
     .filter(val=>val.parentId===null)
-    .map(val=>getReplies(val.id,allNodes));
+    .toSorted((a,b)=>(new Date(b.timestamp) - new Date(a.timestamp)))
+    .map(val=>getReplies(val.id,allNodes,0));
 }
 
 function Feed() {
@@ -27,9 +28,13 @@ function Feed() {
     Authorization:localStorage.token,
   });
   const optionsRef = useRef(null);
+  const newPostRef = useRef(null);
 
   const [newPost,setNewPost] = useState('');
+  const [newReply, setNewReply] = useState('');
   const [currPost, setCurrPost] = useState(0);
+  const [active,setActive] = useState(null);
+  const [now,setNow] = useState(Date.now());
 
   return (
     <>
@@ -41,6 +46,7 @@ function Feed() {
             <textarea value={newPost} onChange={e=>setNewPost(e.target.value)} name="post-content" id="post-content" cols="30" rows="10" placeholder='feeling a little...'></textarea>
             <button onClick={async e=>{
               e.preventDefault();
+              newPostRef.current.classList.toggle('hidden');
               const response = await fetch('http://localhost:3000/posts/',{
                 method:'POST',
                 body:JSON.stringify({content:newPost}),
@@ -49,12 +55,24 @@ function Feed() {
                   Authorization:localStorage.token
                 }
               });
+              newPostRef.current.classList.toggle('hidden');
               reloadPosts();
               setNewPost('');
             }}>New post</button>
           </form>
+          <div className='hidden' ref={newPostRef}>
+            <Thread thread={[{
+              id:-1,
+              content:newPost,
+              timestamp:now,
+              author:{
+                username:localStorage.username,
+                hueRotation:localStorage.hueRotation
+              }
+            }]}></Thread>
+          </div>
           {posts ? (
-            getTopLevel(posts).map(thread => <Thread key = {thread[0].id} thread={thread} optionsRef={optionsRef} setCurrPost={setCurrPost}></Thread>)
+            getTopLevel(posts).map(thread => <Thread key = {thread[0].id} thread={thread} optionsRef={optionsRef} setCurrPost={setCurrPost} active={active} setActive={setActive} newReply={newReply} setNewReply={setNewReply} reloadPosts={reloadPosts}></Thread>)
           ):'whoa'}
         </div>
       </main>
