@@ -32,7 +32,7 @@ function Sidebar() {
             <li><button onClick={()=>nav('/friends',{replace:true})}>Friends</button></li>
         </ul>
         <button className="profile" onClick={()=>dialogRef.current.showModal()}>
-            <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${90}deg)`}}/>
+            <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${localStorage.hueRotate}deg)`}}/>
             <div className="text">@{localStorage.username}</div>
         </button>
     </nav>

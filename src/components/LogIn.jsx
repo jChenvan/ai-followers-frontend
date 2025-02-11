@@ -36,6 +36,7 @@ function LogIn({isUserNew}) {
                 } else {
                     localStorage.token = data.token;
                     localStorage.username = username;
+                    localStorage.hueRotation = data.hueRotation;
                     nav('/',{replace:true});
                 }
             }}>{isUserNew ? 'Sign up' : 'Log in'}</button>
