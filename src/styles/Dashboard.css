@@ -1,8 +1,8 @@
 main {
-  height:calc(100vh - 123.97px);
+  height:calc(100vh - 103.97px);
   display: grid;
   grid-template-columns: auto 1fr;
-  justify-items: center;
+  justify-items: stretch;
   position: relative;
   z-index: 0;
 }
@@ -10,4 +10,40 @@ main {
 header {
   position: relative;
   z-index: 1;
+}
+
+.scroll {
+  overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  padding:0 30px;
+}
+
+button {
+  background-color: hsl(200deg,100%,90%);
+  border: none;
+  border-radius: 2px;
+  color: rgb(61, 42, 75);
+  margin: 3px 0;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+button:active {
+  filter: brightness(0.8);
+}
+
+dialog {
+  padding: 0;
+  border: none;
+  background: none;
+  overflow: visible;
+}
+
+dialog > div {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
 }

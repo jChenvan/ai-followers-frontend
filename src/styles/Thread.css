@@ -1,7 +1,5 @@
 .thread {
-    box-shadow: 0 0 10px black;
-    width: 50ch;
-    margin: 20px;
+    box-shadow: 0 0 5px black;
     border-radius: 10px;
     list-style: none;
     padding: 0;
@@ -28,6 +26,7 @@
 button.options {
     background:none;
     border: none;
+    justify-self: end;
 }
 
 button.options:hover {
@@ -40,7 +39,7 @@ button.options:hover {
 }
 
 .post .date {
-    grid-column: 2/-1;
+    grid-column: 3/-1;
     justify-self: end;
     color: rgb(99, 99, 99);
 }
@@ -65,10 +64,17 @@ button.options:hover {
 
 .reply-form {
     position: relative;
+    grid-column: 2/3;
 }
 
 .reply-form .reply {
     z-index: 2;
     position: absolute;
-    background-color: antiquewhite;
+    background-color: hsl(200deg,100%,80%);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.reply-form button {
+    font-size: 14px;
 }

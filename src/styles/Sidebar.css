@@ -3,24 +3,7 @@ nav {
     display: flex;
     flex-direction: column;
     border-right: 1px solid gray;
-}
-
-.search {
-    display: flex;
-    align-items: center;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 2px;
-    margin: 20px 20px;
-}
-
-.search input {
-    border: none;
-    flex: 1;
-}
-
-.search input:focus {
-    outline:none;
+    padding-top: 50px;
 }
 
 nav ul {
@@ -34,6 +17,7 @@ nav button {
     background: none;
     border: none;
     text-align: start;
+    color: rgb(66, 66, 66);
 }
 
 nav li button {
@@ -61,14 +45,4 @@ button.profile {
 button.profile:hover .text {
     color: blue;
     text-decoration: underline;
-}
-
-dialog {
-    padding: 0;
-    border: none;
-}
-
-dialog div {
-    padding:50px;
-    background-color: white;
 }

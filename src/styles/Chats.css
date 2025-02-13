@@ -1,5 +1,24 @@
+
+.select-friend > * {
+    width:100%;
+    font-size: 24px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    background-image: linear-gradient(to right ,rgb(255, 196, 0),rgb(255, 115, 0));
+    position: sticky;
+    top:0;
+    left:0;
+    color:rgb(67,55,75);
+    font-weight: bold;
+}
+
+.select-friend > :not(:active) {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
 .chat {
-    overflow-y: scroll;
     display: flex;
     flex-direction: column;
 }
@@ -13,7 +32,7 @@
     display: flex;
     flex-direction: column;
     width:50ch;
-    padding: 0px 30px;
+    padding: 0;
     gap: 10px;
 }
 
@@ -29,13 +48,13 @@
 
 .friend {
     align-self: flex-end;
-    background-color: rgb(163, 218, 255);
+    background-color: rgb(218, 163, 255);
     margin-left: 50px;
 }
 
 .you {
     align-self: flex-start;
-    background-color: rgb(255, 255, 178);
+    background-color: rgb(255, 209, 56);
     margin-right: 50px;
 }
 
@@ -43,4 +62,14 @@
     position: sticky;
     bottom: 0;
     left: 0;
+    display: flex;
+    background-color: rgb(218, 163, 255);
+    padding: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    gap: 3px;
+}
+
+.new-message input {
+    flex:1;
 }
