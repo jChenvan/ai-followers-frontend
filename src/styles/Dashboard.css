@@ -1,5 +1,5 @@
 main {
-  height:calc(100vh - 103.97px);
+  height:calc(100vh - 107.97px);
   display: grid;
   grid-template-columns: auto 1fr;
   justify-items: stretch;
@@ -46,4 +46,14 @@ dialog > div {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 0 5px black;
+}
+
+@media (max-width:860px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+  
+  main > nav {
+    display: none;
+  }
 }

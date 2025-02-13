@@ -10,10 +10,14 @@ header {
     gap: 20px;
 }
 
-.logo .text {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 40px;
-    color: rgb(118, 0, 173);
+.logo .image {
+    flex: 1;
+}
+
+.logo button {
+    padding: 0;
+    margin: 0;
+    background-color: white;
 }
 
 .man {
@@ -23,3 +27,43 @@ header {
 .robo {
     color:rgb(0, 153, 255);
 }
+
+.menu {
+    position: relative;
+    display: none;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin:0;
+    position: absolute;
+    right:0;
+    top:100%;
+}
+
+.menu li {
+    background-color: hsl(200deg,100%,90%);
+    padding: 15px;
+}
+
+.menu li:hover {
+    filter: brightness(0.8);
+}
+
+.menu a {
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 24px;
+    color: rgb(57, 44, 65);
+}
+
+.menu ul.hidden {
+    display: none;
+}
+
+@media (max-width:860px) {
+    .menu {
+        display: block;
+    }
+  }

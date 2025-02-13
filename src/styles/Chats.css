@@ -21,6 +21,7 @@
 .chat {
     display: flex;
     flex-direction: column;
+    width: 60ch;
 }
 
 .messages {
@@ -31,7 +32,6 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    width:50ch;
     padding: 0;
     gap: 10px;
 }
