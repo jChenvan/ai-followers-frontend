@@ -1,11 +1,9 @@
 import { useRef, useState } from "react"
-import Search from '/magnify.svg'
 import ProfilePic from '/man.png'
 import '../styles/Sidebar.css'
 import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
-    const [query,setQuery] = useState('');
     const dialogRef = useRef(null);
     const nav = useNavigate();
 
@@ -22,10 +20,6 @@ function Sidebar() {
         </div>
     </dialog>
     <nav>
-        <div className="search">
-            <input type="text" value={query} onChange={event=>setQuery(event.target.value)}/>
-            <img src={Search} alt="" width={20}/>
-        </div>
         <ul>
             <li><button onClick={()=>nav('/feed',{replace:true})}>Feed</button></li>
             <li><button onClick={()=>nav('/messages',{replace:true})}>Chats</button></li>
