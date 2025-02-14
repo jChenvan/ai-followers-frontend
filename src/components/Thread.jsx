@@ -10,13 +10,13 @@ function Thread({thread,optionsRef,setCurrPost,active,setActive, newReply, setNe
     return (<ul className="thread">
         {thread.map((reply,index)=><li key={reply.id} className="post" id = {`post-${reply.id}`}>
             <div style={{borderLeftColor:`hsl(200deg,100%,${Math.max(100-reply.depth*10,0)}%)`}}>
-                <img className="profile" src={index ? "/robo.png" : "/man.png"} alt="" width={50} style={{filter:`hue-rotate(${reply.author.hueRotation}deg)`}}/>
+                <img className="profile" src={index ? "robo.png" : "man.png"} alt="" width={50} style={{filter:`hue-rotate(${reply.author.hueRotation}deg)`}}/>
                 <h1>@{reply.author.username}</h1>
                 <button className="options" onClick={()=>{
                     setCurrPost(reply.id);
                     optionsRef.current.showModal();
                 }}>
-                    <img src="/dots-vertical.svg" alt="options"/>
+                    <img src="dots-vertical.svg" alt="options"/>
                 </button>
                 <p>
                     {reply.parentId ? <Link to={'#post-'.concat(reply.parentId)}>@{thread.find(val=>val.id === reply.parentId).author.username}</Link> : null}

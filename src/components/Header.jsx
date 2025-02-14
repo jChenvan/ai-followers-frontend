@@ -12,7 +12,7 @@ function Header() {
             <div className="image"><img src={Logo} alt="logo" width={300}/></div>
             <div className="menu">
               <button onClick={()=>menuRef.current.classList.toggle('hidden')}>
-                <img src="/menu.svg" alt="" height={80}/>
+                <img src="menu.svg" alt="" height={80}/>
               </button>
               <ul ref={menuRef} className='hidden'>
                 <li><Link to={'/ai-followers-frontend/feed'}>Feed</Link></li>

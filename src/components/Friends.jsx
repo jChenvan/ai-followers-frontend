@@ -40,7 +40,8 @@ function Friends() {
                 <form action="">
                     <input type="text" placeholder="name" value={name} onChange={e=>setName(e.target.value)}/>
                     <textarea name="" id="" placeholder="prompt" value={prompt} onChange={e=>setPrompt(e.target.value)}></textarea>
-                    <button onClick={async ()=>{
+                    <button onClick={async e=>{
+                        e.preventDefault();
                         await api.Friend.add(name,prompt);
                         setFriends(await api.Friend.get());
                         setName('');
@@ -49,12 +50,12 @@ function Friends() {
                 </form>
                 <ul>
                     {friends ? friends.toReversed().map(f=><li key={f.user.id}>
-                        <img src="/robo.png" alt="" width={70} style={{filter:`hue-rotate(${f.user.hueRotation}deg)`}}/>
+                        <img src="robo.png" alt="" width={70} style={{filter:`hue-rotate(${f.user.hueRotation}deg)`}}/>
                         <h1>@{f.user.username}</h1>
                         <button onClick={()=>{
                             setFocus(f.user.id);
                             optionsRef.current.showModal();
-                        }}><img src="/dots-vertical.svg" alt="" width={30}/></button>
+                        }}><img src="dots-vertical.svg" alt="" width={30}/></button>
                         <p>{f.prompt}</p>
                     </li>):<li>Loading</li>}
                 </ul>
