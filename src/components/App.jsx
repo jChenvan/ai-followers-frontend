@@ -19,9 +19,9 @@ const router = createBrowserRouter([
         element:<ProtectedRoute/>,
         children:[
             {path:"",element:<Navigate to="/ai-followers-frontend/feed" replace/>},
-            {path:"/ai-followers-frontend/feed", element:<Feed/>},
-            {path:"/ai-followers-frontend/messages", element:<Chats/>},
-            {path:"/ai-followers-frontend/friends", element:<Friends></Friends>}
+            {path:"feed", element:<Feed/>},
+            {path:"messages", element:<Chats/>},
+            {path:"friends", element:<Friends></Friends>}
         ]
     },
     {
