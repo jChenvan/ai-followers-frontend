@@ -10,7 +10,7 @@ const isAuthenticated = () => {
 }
 
 const ProtectedRoute = () => {
-    return isAuthenticated() ? <Outlet/> : <Navigate to="/login" replace/>;
+    return isAuthenticated() ? <Outlet/> : <Navigate to="/ai-followers-frontend/login" replace/>;
 }
 
 const router = createBrowserRouter([
