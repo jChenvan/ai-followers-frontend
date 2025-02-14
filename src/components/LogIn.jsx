@@ -32,15 +32,15 @@ function LogIn({isUserNew}) {
                 }
                 const data = await response.json();
                 if (isUserNew) {
-                    nav('/login',{replace:true});
+                    nav('/ai-followers-frontend/login',{replace:true});
                 } else {
                     localStorage.token = data.token;
                     localStorage.username = username;
                     localStorage.hueRotation = data.hueRotation;
-                    nav('/',{replace:true});
+                    nav('/ai-followers-frontend',{replace:true});
                 }
             }}>{isUserNew ? 'Sign up' : 'Log in'}</button>
-            <Link to={isUserNew ? '/login':'/signup'}>{isUserNew ? 'Already a user? Log in!' : 'Not a user? Sign up!'}</Link>
+            <Link to={'/ai-followers-frontend'.concat(isUserNew ? '/login':'/signup')}>{isUserNew ? 'Already a user? Log in!' : 'Not a user? Sign up!'}</Link>
         </form>
     </div>)
 }

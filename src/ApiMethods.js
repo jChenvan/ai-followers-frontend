@@ -8,7 +8,7 @@ async function handleRedirect(nav,fetcher) {
   try {
     const res = await fetcher();
     if (!res.ok) {
-      if (res.status == 403) nav("/login", { replace: true });
+      if (res.status == 403) nav("/ai-followers-frontend/login", { replace: true });
       throw new Error(`Error:${res.status}`);
     }
     return await res.json();

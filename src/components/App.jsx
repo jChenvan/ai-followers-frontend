@@ -15,7 +15,7 @@ const ProtectedRoute = () => {
 
 const router = createBrowserRouter([
     {
-        path:'/',
+        path:'/ai-followers-frontend',
         element:<ProtectedRoute/>,
         children:[
             {path:"",element:<Navigate to="/feed" replace/>},
@@ -25,11 +25,11 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path:'/login',
+        path:'/ai-followers-frontend/login',
         element: <LogIn isUserNew={false}/>
     },
     {
-        path:'/signup',
+        path:'/ai-followers-frontend/signup',
         element: <LogIn isUserNew={true}/>
     }
 ]);

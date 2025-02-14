@@ -15,9 +15,9 @@ function Header() {
                 <img src="/menu.svg" alt="" height={80}/>
               </button>
               <ul ref={menuRef} className='hidden'>
-                <li><Link to={'/feed'}>Feed</Link></li>
-                <li><Link to={'/messages'}>Chats</Link></li>
-                <li><Link to={'/friends'}>Friends</Link></li>
+                <li><Link to={'/ai-followers-frontend/feed'}>Feed</Link></li>
+                <li><Link to={'/ai-followers-frontend/messages'}>Chats</Link></li>
+                <li><Link to={'/ai-followers-frontend/friends'}>Friends</Link></li>
               </ul>
             </div>
         </div>

@@ -14,16 +14,16 @@ function Sidebar() {
                 () => {
                     localStorage.removeItem('token');
                     localStorage.removeItem('username');
-                    nav('/login',{replace:true});
+                    nav('/ai-followers-frontend/login',{replace:true});
                 }
             }>Log out</button>
         </div>
     </dialog>
     <nav>
         <ul>
-            <li><button onClick={()=>nav('/feed',{replace:true})}>Feed</button></li>
-            <li><button onClick={()=>nav('/messages',{replace:true})}>Chats</button></li>
-            <li><button onClick={()=>nav('/friends',{replace:true})}>Friends</button></li>
+            <li><button onClick={()=>nav('/ai-followers-frontend/feed',{replace:true})}>Feed</button></li>
+            <li><button onClick={()=>nav('/ai-followers-frontend/messages',{replace:true})}>Chats</button></li>
+            <li><button onClick={()=>nav('/ai-followers-frontend/friends',{replace:true})}>Friends</button></li>
         </ul>
         <button className="profile" onClick={()=>dialogRef.current.showModal()}>
             <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${localStorage.hueRotate}deg)`}}/>
