@@ -10,7 +10,7 @@ const isAuthenticated = () => {
 }
 
 const ProtectedRoute = () => {
-    return isAuthenticated() ? <Outlet/> : <Navigate to="/ai-followers-frontend/login" replace/>;
+    return isAuthenticated() ? <Outlet/> : <Navigate to="login" replace/>;
 }
 
 const router = createBrowserRouter([
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
         path:'/ai-followers-frontend',
         element:<ProtectedRoute/>,
         children:[
-            {path:"",element:<Navigate to="/ai-followers-frontend/feed" replace/>},
+            {path:"",element:<Navigate to="feed" replace/>},
             {path:"feed", element:<Feed/>},
             {path:"messages", element:<Chats/>},
             {path:"friends", element:<Friends></Friends>}
