@@ -27,6 +27,8 @@ Repo for the backend component can be found [here](https://github.com/jChenvan/a
     npm install
     ```
 
+3. Change the url variable in ApiMethods.js to the url to the backend
+
 4. Run the app:
     ```bash
     npm run dev
