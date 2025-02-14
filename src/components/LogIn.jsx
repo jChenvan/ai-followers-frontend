@@ -16,7 +16,7 @@ function LogIn({isUserNew}) {
             <input type="password" id="password" name="password" value={password} onChange={e=>setPassword(e.target.value)}/>
             <button onClick={async event=>{
                 event.preventDefault();
-                const response = await fetch('http://localhost:3000/'.concat(isUserNew ? 'users' : 'log-in'),{
+                const response = await fetch('patient-meagan-jchenvans-org-21d9a8e9.koyeb.app/'.concat(isUserNew ? 'users' : 'log-in'),{
                     method:'POST',
                     headers: {
                         'Content-Type': "application/json"
