@@ -26,6 +26,7 @@ function Friends() {
         <Sidebar></Sidebar>
         <div className="scroll">
             <div className="friends">
+                <p className="instruction">Create custom AI characters using a name and a prompt, then interact with them in the Feed/Chat tabs!</p>
                 <dialog ref={optionsRef} onClick={async e=>{
                     if (e.target === optionsRef.current) optionsRef.current.close();
                 }}>
@@ -38,11 +39,11 @@ function Friends() {
                     </div>
                 </dialog>
                 <form action="">
-                    <input type="text" placeholder="name" value={name} onChange={e=>setName(e.target.value)}/>
-                    <textarea name="" id="" placeholder="prompt" value={prompt} onChange={e=>setPrompt(e.target.value)}></textarea>
+                    <input type="text" placeholder="John Doe" value={name} onChange={e=>setName(e.target.value)}/>
+                    <textarea name="" id="" placeholder="You are a..." value={prompt} onChange={e=>setPrompt(e.target.value)}></textarea>
                     <button onClick={async e=>{
                         e.preventDefault();
-                        await api.Friend.add(name,prompt);
+                        await api.Friend.add(name,`You are ${name}.\n${prompt}`);
                         setFriends(await api.Friend.get());
                         setName('');
                         setPrompt('');
@@ -56,7 +57,7 @@ function Friends() {
                             setFocus(f.user.id);
                             optionsRef.current.showModal();
                         }}><img src="dots-vertical.svg" alt="" width={30}/></button>
-                        <p>{f.prompt}</p>
+                        <p>{f.prompt.split('.\n').slice(1).join('')}</p>
                     </li>):<li>Loading</li>}
                 </ul>
             </div>

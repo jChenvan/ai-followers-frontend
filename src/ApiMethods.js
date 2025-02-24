@@ -1,4 +1,4 @@
-const url = "https://patient-meagan-jchenvans-org-21d9a8e9.koyeb.app";
+const url = "https://ai-followers-backend-production.up.railway.app";
 const headers = () => ({
   "Content-Type": "application/json",
   Authorization: localStorage.token,

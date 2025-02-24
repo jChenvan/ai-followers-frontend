@@ -25,7 +25,7 @@ function Chats() {
         api.Message.get(res[0].user.id).then(res=>setChats(res));
       }
     })},[]);
-    useEffect(()=>{chatRef.current.scrollTop = chatRef.current.scrollHeight},[chats]);
+    useEffect(()=>{window.scrollTo({top:window.innerHeight,left:0,behavior:'smooth'})},[chats]);
   
     return (
       <>
@@ -58,11 +58,11 @@ function Chats() {
                   <input type="text" name="" id="" value={newMessage} onChange={e=>setNewMessage(e.target.value)} placeholder="hey there..."/>
                   <button onClick={async e=>{
                       e.preventDefault();
+                      setNewMessage('');
                       await api.Message.add(parseInt(friend),newMessage);
                       setChats(await api.Message.get(friend));
                       await api.Message.add(null,null,parseInt(friend));
                       setChats(await api.Message.get(friend));
-                      setNewMessage('');
                   }}>Send</button>
               </form>
             </div>

@@ -7,7 +7,7 @@ function LogIn({isUserNew}) {
     const [password,setPassword] = useState('');
     const nav = useNavigate();
 
-    return (<div className="login-page">
+    return (<div className={`login-page ${isUserNew ? 'signup-page' : ''}`}>
         <form action="" method="post">
             <h1>{isUserNew ? 'Sign Up' : 'Log In'}</h1>
             <label htmlFor="username">Username</label>
@@ -16,7 +16,7 @@ function LogIn({isUserNew}) {
             <input type="password" id="password" name="password" value={password} onChange={e=>setPassword(e.target.value)}/>
             <button onClick={async event=>{
                 event.preventDefault();
-                const response = await fetch('https://patient-meagan-jchenvans-org-21d9a8e9.koyeb.app/'.concat(isUserNew ? 'users' : 'log-in'),{
+                const response = await fetch('https://ai-followers-backend-production.up.railway.app/'.concat(isUserNew ? 'users' : 'log-in'),{
                     method:'POST',
                     headers: {
                         'Content-Type': "application/json"
@@ -28,6 +28,7 @@ function LogIn({isUserNew}) {
                     mode:'cors'
                 });
                 if (response.status >= 400) {
+                    alert('login error!');
                     return;
                 }
                 const data = await response.json();

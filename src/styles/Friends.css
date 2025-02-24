@@ -1,3 +1,14 @@
+.instruction {
+    text-align: center;
+    margin: 0 0 15px 0;
+    padding: 15px;
+    background-image: linear-gradient(to bottom right, rgb(121, 0, 177),rgb(184, 77, 255));
+    color: cyan;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
 .friends {
     width: 50ch;
     padding: 10px 0;
@@ -24,7 +35,7 @@
     column-gap: 5px;
 }
 
-.friends p {
+.friends p:not(.instruction) {
     grid-column: 1/-1;
     padding-left: 20px;
 }

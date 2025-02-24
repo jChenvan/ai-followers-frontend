@@ -20,15 +20,17 @@ function Sidebar() {
         </div>
     </dialog>
     <nav>
-        <ul>
-            <li><button onClick={()=>nav('/ai-followers-frontend/feed',{replace:true})}>Feed</button></li>
-            <li><button onClick={()=>nav('/ai-followers-frontend/messages',{replace:true})}>Chats</button></li>
-            <li><button onClick={()=>nav('/ai-followers-frontend/friends',{replace:true})}>Friends</button></li>
-        </ul>
-        <button className="profile" onClick={()=>dialogRef.current.showModal()}>
-            <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${localStorage.hueRotate}deg)`}}/>
-            <div className="text">@{localStorage.username}</div>
-        </button>
+        <div>
+            <ul>
+                <li><button onClick={()=>nav('/ai-followers-frontend/feed',{replace:true})}>Feed</button></li>
+                <li><button onClick={()=>nav('/ai-followers-frontend/messages',{replace:true})}>Chats</button></li>
+                <li><button onClick={()=>nav('/ai-followers-frontend/friends',{replace:true})}>Friends</button></li>
+            </ul>
+            <button className="profile" onClick={()=>dialogRef.current.showModal()}>
+                <img src={ProfilePic} alt="" width={50} style={{filter:`hue-rotate(${localStorage.hueRotation}deg)`}}/>
+                <div className="text">@{localStorage.username}</div>
+            </button>
+        </div>
     </nav>
     </>)
 }

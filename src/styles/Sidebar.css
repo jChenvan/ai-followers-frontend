@@ -35,6 +35,7 @@ nav li button:active {
 }
 
 button.profile {
+    margin-top: 50px;
     display: flex;
     align-items: center;
     padding: 20px 30px;
