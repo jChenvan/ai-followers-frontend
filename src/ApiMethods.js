@@ -1,4 +1,4 @@
-const url = "https://ai-followers-backend-production.up.railway.app";
+const url = "https://ai-followers-backend.onrender.com";
 const headers = () => ({
   "Content-Type": "application/json",
   Authorization: localStorage.token,

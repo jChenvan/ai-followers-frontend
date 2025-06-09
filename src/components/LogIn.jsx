@@ -16,7 +16,7 @@ function LogIn({isUserNew}) {
             <input type="password" id="password" name="password" value={password} onChange={e=>setPassword(e.target.value)}/>
             <button onClick={async event=>{
                 event.preventDefault();
-                const response = await fetch('https://ai-followers-backend-production.up.railway.app/'.concat(isUserNew ? 'users' : 'log-in'),{
+                const response = await fetch('https://ai-followers-backend.onrender.com/'.concat(isUserNew ? 'users' : 'log-in'),{
                     method:'POST',
                     headers: {
                         'Content-Type': "application/json"
