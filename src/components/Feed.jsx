@@ -6,6 +6,7 @@ import Thread from './Thread'
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ApiMethods from '../ApiMethods'
+import Loading from './Loading'
 
 function randIndicies(len,num) {
   const res = [];
@@ -78,7 +79,7 @@ function Feed() {
             </form>
             {posts ? (
               getTopLevel(posts).map(thread => <Thread key = {thread[0].id} thread={thread} optionsRef={optionsRef} setCurrPost={setCurrPost} active={active} setActive={setActive} newReply={newReply} setNewReply={setNewReply} setPosts={setPosts}></Thread>)
-            ):'whoa'}
+            ):<Loading/>}
           </div>
         </div>
       </main>

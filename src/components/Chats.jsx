@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import '../styles/Chats.css'
 import { useNavigate } from "react-router-dom";
 import ApiMethods from "../ApiMethods";
+import Loading from "./Loading";
 
 function Chats() {
     const nav = useNavigate();
@@ -51,7 +52,7 @@ function Chats() {
                               <p>{msg.content}</p>
                               <div>{new Date(msg.timestamp).toLocaleString()}</div>
                           </li>)
-                      ) : <li>Loading</li>}
+                      ) : <li><Loading/></li>}
                   </ul>
               </div>
               <form className="new-message">

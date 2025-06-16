@@ -5,6 +5,7 @@ import '../styles/Friends.css'
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApiMethods from "../ApiMethods";
+import Loading from "./Loading";
 
 function Friends() {
     const nav = useNavigate();
@@ -58,7 +59,7 @@ function Friends() {
                             optionsRef.current.showModal();
                         }}><img src="dots-vertical.svg" alt="" width={30}/></button>
                         <p>{f.prompt.split('.\n').slice(1).join('')}</p>
-                    </li>):<li>Loading</li>}
+                    </li>):<li><Loading/></li>}
                 </ul>
             </div>
         </div>
