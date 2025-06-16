@@ -8,6 +8,7 @@ import ApiMethods from "../ApiMethods";
 import Loading from "./Loading";
 
 function Friends() {
+    const [loading, setLoading] = useState(false);
     const nav = useNavigate();
     const api = useMemo(()=>ApiMethods(nav),[]);
 
@@ -44,14 +45,17 @@ function Friends() {
                     <textarea name="" id="" placeholder="You are a..." value={prompt} onChange={e=>setPrompt(e.target.value)}></textarea>
                     <button onClick={async e=>{
                         e.preventDefault();
+                        setLoading(true);
                         await api.Friend.add(name,`You are ${name}.\n${prompt}`);
                         setFriends(await api.Friend.get());
                         setName('');
                         setPrompt('');
+                        setLoading(false);
                     }}>submit</button>
                 </form>
+                {!friends || loading && <Loading/>}
                 <ul>
-                    {friends ? friends.toReversed().map(f=><li key={f.user.id}>
+                    {friends && friends.toReversed().map(f=><li key={f.user.id}>
                         <img src="robo.png" alt="" width={70} style={{filter:`hue-rotate(${f.user.hueRotation}deg)`}}/>
                         <h1>@{f.user.username}</h1>
                         <button onClick={()=>{
@@ -59,7 +63,7 @@ function Friends() {
                             optionsRef.current.showModal();
                         }}><img src="dots-vertical.svg" alt="" width={30}/></button>
                         <p>{f.prompt.split('.\n').slice(1).join('')}</p>
-                    </li>):<li><Loading/></li>}
+                    </li>)}
                 </ul>
             </div>
         </div>
